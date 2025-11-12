@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FluxURL - Modern URL Shortener</title>
+
+    <!-- Libs & CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- Header -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<main class="main-content">
+    <!-- Hero Section / Create URL -->
+    <section id="hero-section" class="hero-section">
+        <div class="container">
+            <h1 class="display-4">Shorten. Share. Shine.</h1>
+            <p class="lead">Create clean, memorable links. The simplest and most powerful URL shortener.</p>
+
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8">
+                    <div class="form-container">
+                        <form id="shorten-form">
+                            <div class="input-group mb-3">
+                                <input type="url" class="form-control form-control-lg" id="longUrl" name="longUrl" placeholder="Enter your long URL here..." required>
+                                <button class="btn btn-primary btn-lg" type="submit" id="submit-button">Shorten</button>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="customAlias" name="customAlias" placeholder="Optional: custom alias (3-10 chars)">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="date" class="form-control" id="expiresAt" name="expiresAt" title="Set an expiry date">
+                                </div>
+                            </div>
+                        </form>
+                        <div id="result-section" class="mt-3"></div>
+                        <div id="error-section" class="alert alert-danger mt-3" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- URL Inspector Section -->
+    <section id="inspector-section" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title">URL Inspector</h2>
+            <p class="text-center lead mb-4">Enter a short or long URL to inspect its details.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form id="inspect-form">
+                        <div class="input-group">
+                            <input type="text" id="inspect-url-input" class="form-control form-control-lg" placeholder="Enter URL to inspect..." required>
+                            <button class="btn btn-outline-light" type="submit">Inspect</button>
+                        </div>
+                    </form>
+                    <div id="inspect-result-section" class="mt-4"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My URLs Section -->
+    <section id="my-urls-section" class="section">
+        <div class="container">
+            <h2 class="section-title">My URLs</h2>
+            <p class="text-center mb-4">A list of recently created URLs in this session.</p>
+            <div id="url-list">
+                <!-- URL cards will be injected here by main.js -->
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- Update URL Modal -->
+<div class="modal fade" id="updateUrlModal" tabindex="-1" aria-labelledby="updateUrlModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateUrlModalLabel">Update URL</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="update-url-form">
+                    <input type="hidden" id="update-short-url">
+                    <div class="mb-3">
+                        <label for="update-long-url" class="form-label">New Destination URL</label>
+                        <input type="url" class="form-control" id="update-long-url" placeholder="Enter new long URL">
+                    </div>
+                    <div class="mb-3">
+                        <label for="update-expires-at" class="form-label">New Expiration Date</label>
+                        <input type="date" class="form-control" id="update-expires-at">
+                    </div>
+                     <p class="form-text text-muted">Only fill the fields you want to change.</p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Libs & JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/main.js}"></script>
+
+</body>
+</html>

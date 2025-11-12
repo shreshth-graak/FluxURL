@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-color: #6f42c1; /* A nice purple */
+    --secondary-color: #191c24; /* Darker background */
+    --dark-color: #101218; /* Darkest background */
+    --light-color: #f8f9fa;
+    --text-color: #adb5bd;
+    --gradient: linear-gradient(45deg, #6f42c1, #4a00e0);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 70px; /* For fixed navbar */
+}
+
+.navbar {
+    background: rgba(12, 16, 28, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #30343d;
+}
+
+.navbar-brand {
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: var(--gradient);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+/* --- Logo Visibility Fix --- */
+.navbar-brand img {
+    height: 120px;
+    width: auto;
+    filter: brightness(100%);
+    filter: drop-shadow(0 2px 12px rgba(111, 66, 193, 0.5));
+    transition: transform 0.3s ease, filter 0.3s ease;
+    zoom:100%;
+}
+/* .navbar-brand img:hover {
+    transform: scale(1);
+    background: rgba(255, 255, 255, 0.15);
+    filter: drop-shadow(0 4px 15px rgba(111, 66, 193, 0.9));
+} */
+/* --- End Logo Visibility Fix --- */
+
+
+.btn-primary {
+    background: var(--gradient);
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(111, 66, 193, 0.5);
+}
+
+.main-content {
+    flex: 1;
+}
+
+.hero-section {
+    padding: 6rem 0;
+    text-align: center;
+    background: var(--dark-color);
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--light-color);
+}
+
+.hero-section .lead {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 1rem auto;
+}
+
+.form-container {
+    background: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid #30343d;
+}
+
+.form-control, .form-control:focus {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    border: 1px solid #30343d;
+    padding: 0.75rem 1rem;
+}
+
+.form-control::placeholder {
+    color: var(--text-color);
+}
+
+.form-control:focus {
+    box-shadow: 0 0 10px rgba(111, 66, 193, 0.3);
+    border-color: var(--primary-color);
+}
+
+/* Style for date picker icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8);
+}
+
+#result-section, #inspect-result-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--dark-color);
+    border-radius: 10px;
+    border: 1px solid #30343d;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.result-card {
+    padding: 1.5rem;
+    background: var(--dark-color);
+    border-radius: 10px;
+    border: 1px solid #30343d;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.result-card .short-link {
+    font-weight: 600;
+    color: var(--primary-color);
+    word-break: break-all;
+}
+
+.section {
+    padding: 4rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    color: var(--light-color);
+}
+
+.url-card {
+    background: var(--secondary-color);
+    border: 1px solid #30343d;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.url-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.url-card .short-link {
+    font-weight: 600;
+    color: var(--primary-color);
+    word-break: break-all;
+}
+
+.url-card .long-link {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.footer {
+    border-top: 1px solid #30343d;
+}
+
+.modal-content {
+    border: 1px solid #30343d;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
