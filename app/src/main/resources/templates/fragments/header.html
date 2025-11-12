@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" th:fragment="header">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="/">
+            <!-- User needs to place their logo at src/main/resources/static/img/fluxlogo.png -->
+            <img src="/img/fluxlogo.png" alt="FluxURL Logo" style="height: 45px; margin-right: 4px;">
+            <span style="font-weight: 700; font-size: 1.5rem;">FluxURL</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#hero-section">Create</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#inspector-section">Inspect</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#my-urls-section">My URLs</a>
+                </li>
+                <li class="nav-item ms-lg-3">
+                    <a class="btn btn-outline-light btn-sm" href="#">Login (Soon)</a>
+                </li>
+                <li class="nav-item ms-lg-2">
+                    <a class="btn btn-primary btn-sm" href="#">Sign Up (Soon)</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>
