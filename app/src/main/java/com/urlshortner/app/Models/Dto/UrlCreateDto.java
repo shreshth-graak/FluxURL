@@ -3,6 +3,7 @@ package com.urlshortner.app.Models.Dto;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ public class UrlCreateDto {
     @Future(message = "Expiration date must be in the future")
     private LocalDate expiresAt;
     @Size(min = 3, max = 10, message = "Custom alias must be between 3 and 10 characters")
+    @Pattern(regexp = "[a-zA-Z0-9_-]+", message = "Custom alias can only contain letters, digits, '-' or '_'")
     private String customAlias;
 
     public String getLongUrl() {

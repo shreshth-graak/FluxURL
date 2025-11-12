@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
@@ -46,9 +47,9 @@ public class UrlManager {
     }
 
 
-    @GetMapping("/{shortUrl}")
-    public ResponseEntity<String> getLongUrl(@PathVariable String shortUrl) {
-        if (shortUrl == null || shortUrl.length() < 3 || shortUrl.length() > 10) {
+    @GetMapping("/getLongUrl")
+    public ResponseEntity<String> getLongUrl(@RequestParam String shortUrl) {
+        if (shortUrl == null) {
             return ResponseEntity.badRequest().build();
         }
         shortUrl = shortUrl.trim();
@@ -89,18 +90,19 @@ public class UrlManager {
         return ResponseEntity.ok(updatedUrlInfo);
     }
 
-    @GetMapping("/info/{Url}")
-    public ResponseEntity<UrlInfoDto> getUrlInfo(@PathVariable String Url) {
-        if (Url == null || Url.isEmpty()) {
+    // @GetMapping("/info/{Url:.+}") // can do with @Request body too but this is fine too we can do like this too
+    @GetMapping("/info")
+    public ResponseEntity<UrlInfoDto> getUrlInfo(@RequestParam String url) {
+        if (url == null || url.isEmpty()) {
             return ResponseEntity.badRequest().build();
         }
-        Url = Url.trim();
-        UrlInfoDto urlInfoDto = urlservice.getUrlInfo(Url);
+        url = url.trim();
+        UrlInfoDto urlInfoDto = urlservice.getUrlInfo(url);
         if (urlInfoDto == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(urlInfoDto);
     }
-    
+
 
 }

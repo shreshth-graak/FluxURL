@@ -51,6 +51,9 @@ public class UrlService {
             String customAlias = urlCreateDto.getCustomAlias();
             String shortUrl ="";
             if (customAlias != null && !customAlias.trim().isEmpty()) {
+                if (!customAlias.matches("[a-zA-Z0-9_-]+")) {
+                    throw new RuntimeException("Custom alias can only contain letters, digits, '-' or '_'");
+                }
                 if(urlInfoRepository.findByShortUrl(customAlias) != null) {
                     throw new RuntimeException("Custom alias already in use");
                 }
@@ -107,6 +110,9 @@ public class UrlService {
             UrlInfo urlInfo;
             if (shortUrl.startsWith(baseurl)) {
                 shortUrl = shortUrl.substring(baseurl.length());
+                if( shortUrl.length() < 3 || shortUrl.length() > 10) {
+                    throw new RuntimeException("Short URL length is invalid");
+                }
                 urlInfo = urlInfoRepository.findByShortUrl(shortUrl);
             }else{
                 urlInfo = urlInfoRepository.findByShortUrl(shortUrl);

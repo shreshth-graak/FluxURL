@@ -48,6 +48,31 @@
         </div>
     </section>
 
+
+    <!-- Unshorten URL Section -->
+    <section id="unshorten-section" class="section">
+        <div class="container">
+            <h2 class="section-title">Unshorten URL</h2>
+            <p class="text-center lead mb-4">Find the original long URL from a shortened link.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="form-container">
+                        <form id="unshorten-form">
+                            <div class="input-group">
+                                <input type="text" id="unshorten-url-input" class="form-control form-control-lg" placeholder="Enter short URL to unshorten..." required>
+                                <button class="btn btn-primary" type="submit">Unshorten</button>
+                            </div>
+                        </form>
+                        <div id="unshorten-result-section" class="mt-4">
+                            <!-- Unshorten results will be dynamically injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
     <!-- URL Inspector Section -->
     <section id="inspector-section" class="section bg-dark">
         <div class="container">
@@ -61,11 +86,14 @@
                             <button class="btn btn-outline-light" type="submit">Inspect</button>
                         </div>
                     </form>
-                    <div id="inspect-result-section" class="mt-4"></div>
+                    <div id="inspect-result-section" class="mt-4">
+                        <!-- Inspection results will be dynamically injected here -->
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- My URLs Section -->
     <section id="my-urls-section" class="section">
